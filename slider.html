@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+    <script src="jquery.js"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.5.0.js"></script> -->
+    <script>
+        $(document).ready(function () {
+            $('#group').children().first().addClass('identifier').clone().appendTo('#result').removeClass('identifier');
+            $('#result').children().prev().remove();
+            $('#result').children().children().first().attr({ 'class': 'result_img' }).fadeIn(500, function () {
+                $(this).next().fadeIn(500);
+            });
+            //by Clicking on pic fnction
+            $('.pic').click(function () {
+                $(this).clone().appendTo('#result');
+                $(this).addClass('identifier');
+                $('#group').children().not(this).removeClass('identifier');
+                $('#result').children().prev().remove();
+                $('#result').children().children().first().attr({ 'class': 'result_img' }).fadeIn(500, function () {
+                    $(this).next().fadeIn(500);
+                });
+            });
+            //next button code
+            $('.next').click(function () {
+                $('.identifier').next().clone().appendTo('#result');
+                $('.identifier').removeClass('identifier').next().addClass('identifier');
+                $('#result').children().prev().remove();
+                $('#result').children().children().first().attr({ 'class': 'result_img' }).fadeIn(500, function () {
+                    $(this).next().fadeIn(500);
+                });
+            });
+            //prev button code
+            $('.prev').click(function () {
+                $('.identifier').prev().clone().appendTo('#result');
+                $('.identifier').removeClass('identifier').prev().addClass('identifier');
+                $('#result').children().prev().remove();
+                $('#result').children().children().first().attr({ 'class': 'result_img' }).fadeIn(500, function () {
+                    $(this).next().fadeIn(500);
+                });
+            });
+            //javascript function for inseserting automatic commands...
+            setInterval (function(){
+                $('.identifier').next().clone().appendTo('#result');
+                $('.identifier').removeClass('identifier').next().addClass('identifier');
+                $('#result').children().prev().remove();
+                $('#result').children().children().first().attr({ 'class': 'result_img' }).fadeIn(500, function () {
+                    $(this).next().fadeIn(500);
+                });
+            },2000)
+        });
+    </script>
+</head>
+
+<body>
+    <div id="group">
+        <div class="pic">
+            <img src="images/1.jpg" class="img" />
+            <div class="text">This is image 1.</div>
+        </div>
+        <div class="pic">
+            <img src="images/2.jpg" class="img" />
+            <div class="text">This is image 2.</div>
+        </div>
+        <div class="pic">
+            <img src="images/3.jpg" class="img" />
+            <div class="text">This is image 3.</div>
+        </div>
+        <div class="pic">
+            <img src="images/4.jpg" class="img" />
+            <div class="text">This is image 4.</div>
+        </div>
+        <div class="pic">
+            <img src="images/5.jpg" class="img" />
+            <div class="text">This is image 5.</div>
+        </div>
+        <div class="pic">
+            <img src="images/6.jpg" class="img" />
+            <div class="text">This is image 6.</div>
+        </div>
+    </div>
+    <button class="prev">Prev</button>
+    <div id="result"></div>
+    <button class="next">Next</button>
+
+</body>
+
+</html>
